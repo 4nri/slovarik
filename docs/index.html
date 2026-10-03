@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#224be8">
+  <meta name="description" content="Подготовка к словарному диктанту по школьному списку для 1–4 классов: запоминание, тренировка на слух и повторение ошибок.">
+  <title>Словарик — готовимся к диктанту</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23224be8'/%3E%3Ctext x='16' y='24' text-anchor='middle' font-family='Arial' font-weight='bold' font-size='25' fill='%23d8ff5e'%3EС%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css?v=3">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="./" aria-label="Словарик, главная"><span class="brandmark">С</span>Словарик<span class="brand-dot">.</span></a><span class="header-note">Готовимся к диктанту</span><button id="open-words" class="button quiet"><span aria-hidden="true">☷</span> Список слов</button></header>
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="eyebrow">ТВОЯ ТЕТРАДЬ</div><h1>Слова, которые<br>ты запомнишь.</h1>
+      <div class="class-label">Выбери класс</div><div class="grade-picker" role="group" aria-label="Класс"><button data-grade="1">1</button><button data-grade="2">2</button><button data-grade="3">3</button><button data-grade="4" class="selected" aria-pressed="true">4</button></div>
+      <button id="mix-classes" class="mix-classes" aria-pressed="false">Смешать классы</button><div class="grade-summary"><span id="grade-caption">4 класс</span><span id="total-caption"></span></div>
+      <div class="side-progress"><div class="side-progress-label"><span>Уверенно пишешь</span><strong id="mastered-count">0</strong></div><div class="meter"><span id="mastered-bar"></span></div><p>Слово считается выученным после двух верных ответов подряд.</p></div>
+      <div class="side-bottom"><span class="tiny-star" aria-hidden="true">✳</span><p>Понемногу каждый день.<br>Ошибаться — часть учёбы.</p></div>
+    </aside>
+    <section class="workspace" aria-label="Тренажёр">
+      <div class="section-top"><div><div class="eyebrow ink-light">ШАГ ЗА ШАГОМ</div><h2>Твоя тренировка</h2></div><span class="source-chip">По школьному списку</span></div>
+      <nav class="mode-tabs" role="tablist" aria-label="Режим подготовки"><button role="tab" aria-selected="true" data-mode="learn"><span class="tab-number">01</span> Запоминаю</button><button role="tab" aria-selected="false" data-mode="practice"><span class="tab-number">02</span> Тренируюсь</button><button role="tab" aria-selected="false" data-mode="dictation"><span class="tab-number">03</span> Диктант</button></nav>
+      <div id="surface" class="surface" role="tabpanel"></div>
+      <div class="workspace-footer"><span id="local-note">Прогресс хранится только в этом браузере.</span><button id="help-button" class="text-button">Как заниматься?</button></div>
+    </section>
+  </main>
+  <dialog id="words-dialog" class="words-dialog"><div class="dialog-head"><div><div class="eyebrow ink-light">ШКОЛЬНЫЙ СПИСОК</div><h2 id="words-heading">Слова для тренировки</h2></div><button class="icon-button" data-close="words-dialog" aria-label="Закрыть список">×</button></div><p class="dialog-desc">Отметь слова из любых классов. При переключении фильтра твой выбор сохраняется.</p><div class="word-controls"><label>Класс<select id="word-grade"><option value="all">Все классы</option><option value="1">1 класс</option><option value="2">2 класс</option><option value="3">3 класс</option><option value="4">4 класс</option></select></label><label>Часть списка<select id="word-part"><option value="all">Весь список</option><option value="1">1 часть</option><option value="2">2 часть</option></select></label><label>Найти слово<input id="word-search" type="search" placeholder="Например, библиотека"></label></div><div class="word-actions"><button id="select-visible" class="text-button">Выбрать показанные</button><button id="clear-visible" class="text-button">Снять показанные</button><button id="clear-all" class="text-button">Снять всё</button><span id="selected-count"></span></div><div id="word-grid" class="word-grid"></div><div class="dialog-bottom"><p>«Е» и «ё» принимаются. Регистр букв не влияет на проверку. Одинаковые слова из разных классов повторяются в занятии один раз.</p><button id="apply-words" class="button primary">Готово</button></div></dialog>
+  <dialog id="help-dialog" class="help-dialog"><div class="dialog-head"><h2>Как заниматься</h2><button class="icon-button" data-close="help-dialog" aria-label="Закрыть справку">×</button></div><ol class="help-steps"><li><strong>Запомни.</strong> Посмотри на слово, произнеси его, затем спрячь и напиши по памяти.</li><li><strong>Потренируйся.</strong> Послушай слово и напиши его. Сразу увидишь, что получилось.</li><li><strong>Проверь себя.</strong> В диктанте ответы проверяются в конце. После него повтори слова с ошибками.</li></ol><p>Начни с 10 слов. В «Списке слов» можно смешать слова из разных классов и выбрать только то, что задали в школе.</p><p>Каждое слово озвучено отдельной записью русского голоса. Кнопка со звуком повторяет запись. Можно выбрать медленный темп. Если звук не работает, взрослый может открыть слово и прочитать его вслух.</p><p>Словарик проверяет написание; «е» и «ё», а также большие и маленькие буквы считаются равными. Написание названий с большой буквы повтори отдельно по карточкам.</p><button class="button primary" data-close="help-dialog">Понятно</button></dialog>
+  <dialog id="exit-dialog" class="help-dialog"><div class="dialog-head"><h2>Закончить занятие?</h2></div><p>Ответы незавершённого занятия не сохранятся.</p><div class="exit-actions"><button class="button secondary" data-close="exit-dialog">Продолжить</button><button id="confirm-exit" class="button primary">Закончить</button></div></dialog>
+  <script src="words.js"></script><script src="audio-map.js?v=5"></script><script src="audio-packs.js?v=5"></script><script src="audio-cache.js?v=5"></script><script src="app.js?v=3"></script>
+</body>
+</html>
